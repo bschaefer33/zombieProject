@@ -6,8 +6,17 @@ package com.teamDecimal.game;
 
 /**
  *
- * @author brittanydesktop
+ * @author Breanna Price-Heuckendorf
  */
 public class Tank extends Zombie {
+	// Attributes
+    String zombieType;
     
+    // Constructors
+    public String getZombieType() {
+    	return zombieType
+    }
+    public void setZombieType(String zombieType) {
+    	this.zombieType = zombieType;
+    }
 }
