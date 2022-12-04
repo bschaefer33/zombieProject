@@ -1,23 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package com.teamDecimal.game;
+package zombiewar;
+
+import java.util.Set;
 
 /**
  *
- * @author Breanna Price-Heuckendorf
+ * Team Decimal 12/4/22
  */
-public class CommonInfect extends Zombie {
-	// Attributes
-    String zombieType;
-    
-    // Constructors
-    public String getZombieType() {
-    	return zombieType
-    }
-    public void setZombieType(String zombieType) {
-    	this.zombieType = zombieType;
+public class CommonInfect extends Zombie{
+            
+    CommonInfect(){
+        super.setStartingHealth(30);
+        super.setCurrentHealth(30);
+        super.setAttackDamage(5);
+        super.setCharType("CommonInfect");
     }
 }
-

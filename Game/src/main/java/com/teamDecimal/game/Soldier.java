@@ -1,13 +1,16 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package com.teamDecimal.game;
+
+package zombiewar;
 
 /**
  *
- * @author brittanydesktop
+ * Team Decimal 12/4/22
  */
-public class Soldier extends Survivor {
-    
+public class Soldier extends Survivor{
+            
+    Soldier(){
+        super.setStartingHealth(100);
+        super.setCurrentHealth(100);
+        super.setAttackDamage(10);
+        super.setCharType("Soldier");
+    }
 }

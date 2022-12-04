@@ -1,49 +1,44 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package com.teamDecimal.game;
+package zombiewar;
 
 /**
  *
- * @author brittanydesktop
+ * Team Decimal 12/4/22
  */
 public class Character {
-    /*Attributes*/
-    int currenthealth;
-    int startingHealth;
-    int attackDamage;
+    private int currentHealth;
+    private int startingHealth;
+    private int attackDamage;
+    private boolean isAlive = true;
     
-    /*Constructors*/
     public int getAttackDamage(){
         return attackDamage;
+    }
+    
+    public void setAttackDamage(int dmg){
+        this.attackDamage = dmg;
     }
     
     public int getStartingHealth(){
         return startingHealth;
     }
     
-    public void setStartingHealth(int startingHealth){
-        this.startingHealth = startingHealth;
-    }
-    
-    public void setCurrentHealth(int currentHealth){
-        this.currenthealth = currentHealth;
+    public void setStartingHealth(int hp){
+        this.startingHealth = hp;
     }
     
     public int getCurrentHealth(){
-        return currenthealth;
+        return currentHealth;
     }
     
-    /*Methods*/
+    public void setCurrentHealth(int currentHealth){
+        this.currentHealth = currentHealth;
+    }
+    
     public boolean isAlive(){
-        boolean isAlive;
-        if(currenthealth <= 0){
-            isAlive = false;
-        }else{
-            isAlive = true;
-        }
         return isAlive;
     }
     
+    public void setIsAlive(boolean condition){
+        this.isAlive = condition;
+    }
 }

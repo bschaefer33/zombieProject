@@ -1,22 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package com.teamDecimal.game;
+package zombiewar;
 
 /**
  *
- * @author Breanna Price-Heuckendorf
+ * Team Decimal 12/4/22
  */
-public class Tank extends Zombie {
-	// Attributes
-    String zombieType;
-    
-    // Constructors
-    public String getZombieType() {
-    	return zombieType
-    }
-    public void setZombieType(String zombieType) {
-    	this.zombieType = zombieType;
+public class Tank extends Zombie{
+            
+    Tank(){
+        super.setStartingHealth(150);
+        super.setCurrentHealth(150);
+        super.setAttackDamage(20);
+        super.setCharType("Tank");
     }
 }
