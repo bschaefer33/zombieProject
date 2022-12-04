@@ -20,3 +20,4 @@ public class CommonInfect extends Zombie {
     	this.zombieType = zombieType;
     }
 }
+
