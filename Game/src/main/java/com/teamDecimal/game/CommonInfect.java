@@ -1,4 +1,4 @@
-package zombiewar;
+package com.teamDecimal.game;
 
 import java.util.Set;
 
