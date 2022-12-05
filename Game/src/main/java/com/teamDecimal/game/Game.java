@@ -8,6 +8,13 @@ package com.teamDecimal.game;
 import java.util.*;
 
 public class Game {
+
+    public static Child[] childArray;
+    public static Tank[] tankArray;
+    public static CommonInfect[] commonInfectArray;
+    public static Teacher[] teacherArray;
+    public static Soldier[] soldierArray; 
+
     public static List<Zombie> zombieList = new ArrayList<>();
     public static List<Zombie> zombieGraveyard = new ArrayList();
     public static List<Survivor> survivorList = new ArrayList<>();
@@ -20,36 +27,61 @@ public class Game {
         //game logic
         System.out.println("Game Start!");
         createCharacters();
+        System.out.println("We have " + survivorList.size() + " survivors trying to make it to safety (" + childArray.length + " children, " + teacherArray.length + " teachers, " + soldierArray.length + " soldiers).");
+        System.out.println("There are " + zombieList.size() + " zombies waiting for them.");
         while (isRunning){
             survivorsAttack();
             zombiesAttack();
             isRunning = declareWinner();
         }
+       // System.out.println("It seems " + survivorList.size() + " have made it to safety.");
     }
     
     public static void createCharacters(){
-        //Zombies created
-        Tank zombie1 = new Tank();
-        CommonInfect zombie2 = new CommonInfect();
-        CommonInfect zombie3 = new CommonInfect();
-        CommonInfect zombie4 = new CommonInfect();
-        zombieList.add(zombie1);
-        zombieList.add(zombie2);
-        zombieList.add(zombie3);
-        zombieList.add(zombie4);
-        
-        //Survivors created
-        Child survivor1 = new Child();
-        Teacher survivor2 = new Teacher();
-        Soldier survivor3 = new Soldier();
-        Soldier survivor4 = new Soldier();
-        Soldier survivor5 = new Soldier();
-        survivorList.add(survivor1);
-        survivorList.add(survivor2);
-        survivorList.add(survivor3);
-        survivorList.add(survivor4);
-        survivorList.add(survivor5);
+        int[] randNums = new int[5];
+        for (int i = 0; i < 5; i++){
+            int randomSize = (int)(Math.random()*10);
+            randNums[i] = randomSize;
+        }//end of for loop
 
+        //Initialize size of arrays
+        childArray = new Child[randNums[0]];
+        teacherArray= new Teacher[randNums[1]];
+        soldierArray = new Soldier[randNums[2]];
+        tankArray= new Tank[randNums[3]];
+        commonInfectArray = new CommonInfect[randNums[4]];
+      
+            for (int i = 0; i < 10; i++){
+                if (i < childArray.length){
+                    Child child = new Child();
+                    childArray[i] = child; //adds a child into the array
+                    survivorList.add(child);
+                }
+                if(i < teacherArray.length){
+                    Teacher teacher = new Teacher();
+                    teacherArray[i] = teacher;//add in a teacher into array
+                    survivorList.add(teacher);
+       
+                }
+                if(i < soldierArray.length){
+                    Soldier soldier = new Soldier();
+                    soldierArray[i] = soldier;//add in a soldier into array 
+                    survivorList.add(soldier);
+                }
+                if(i < commonInfectArray.length){
+                    CommonInfect infected = new CommonInfect();
+                    commonInfectArray[i] = infected; //add in a CommonInfected object array 
+                    zombieList.add(infected);
+                }
+                if(i < tankArray.length){
+                    Tank tank = new Tank();
+                    tankArray[i] = tank; //add in a tank object into array 
+                    zombieList.add(tank);
+                }
+            }//end of for loop i
+     
+    
+    
     }
     
     public static void survivorsAttack(){
