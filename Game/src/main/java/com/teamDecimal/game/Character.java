@@ -9,6 +9,7 @@ public class Character {
     private int startingHealth;
     private int attackDamage;
     private boolean isAlive = true;
+    private int ID;
     
     public int getAttackDamage(){
         return attackDamage;
@@ -41,4 +42,13 @@ public class Character {
     public void setIsAlive(boolean condition){
         this.isAlive = condition;
     }
+
+    public int getID(){
+        return this.ID;
+    }
+    public void setID(int ID){
+        this.ID = ID;
+    }
+
+    
 }

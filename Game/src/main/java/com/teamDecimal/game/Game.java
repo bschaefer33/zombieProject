@@ -27,8 +27,8 @@ public class Game {
         //game logic
         System.out.println("Game Start!");
         createCharacters();
-        System.out.println("We have " + survivorList.size() + " survivors trying to make it to safety (" + childArray.length + " children, " + teacherArray.length + " teachers, " + soldierArray.length + " soldiers).");
-        System.out.println("There are " + zombieList.size() + " zombies waiting for them.");
+        System.out.println("We have " + survivorList.size() + " survivors trying to make it to safety (" + childArray.length + " children, " + teacherArray.length + " teachers, " + soldierArray.length + " soldiers.)");
+        System.out.println("There are " + zombieList.size() + " zombies waiting for them (" + commonInfectArray.length + " common infected, " + tankArray.length + " tanks.)");
         while (isRunning){
             survivorsAttack();
             zombiesAttack();
@@ -54,27 +54,32 @@ public class Game {
             for (int i = 0; i < 10; i++){
                 if (i < childArray.length){
                     Child child = new Child();
+                    child.setID(i);
                     childArray[i] = child; //adds a child into the array
                     survivorList.add(child);
                 }
                 if(i < teacherArray.length){
                     Teacher teacher = new Teacher();
+                    teacher.setID(i);
                     teacherArray[i] = teacher;//add in a teacher into array
                     survivorList.add(teacher);
        
                 }
                 if(i < soldierArray.length){
                     Soldier soldier = new Soldier();
+                    soldier.setID(i);
                     soldierArray[i] = soldier;//add in a soldier into array 
                     survivorList.add(soldier);
                 }
                 if(i < commonInfectArray.length){
                     CommonInfect infected = new CommonInfect();
+                    infected.setID(i);
                     commonInfectArray[i] = infected; //add in a CommonInfected object array 
                     zombieList.add(infected);
                 }
                 if(i < tankArray.length){
                     Tank tank = new Tank();
+                    tank.setID(i);
                     tankArray[i] = tank; //add in a tank object into array 
                     zombieList.add(tank);
                 }
@@ -91,7 +96,10 @@ public class Game {
                 //if survivor is alive, attack zombie at opposing index in zombieList
                 if (survivorList.get(i).isAlive()){
                     zombieList.get(i).setCurrentHealth(zombieList.get(i).getCurrentHealth() - survivorList.get(i).getAttackDamage());
-                    System.out.println(survivorList.get(i).getCharType() + " dealt " + String.valueOf(survivorList.get(i).getAttackDamage()) + " to " + zombieList.get(i).getCharType());
+                    //System.out.println(survivorList.get(i).getCharType() + " dealt " + String.valueOf(survivorList.get(i).getAttackDamage()) + " to " + zombieList.get(i).getCharType());
+                }
+                if (zombieList.get(i).getCurrentHealth() <= 0){
+                    System.out.println(survivorList.get(i).getCharType() + " " + survivorList.get(i).getID() + " Killed " + zombieList.get(i).getCharType() + " " + zombieList.get(i).getID());
                 }
                 
             }
@@ -100,7 +108,10 @@ public class Game {
             for (int i = 0; i < zombieList.size(); i++){
                 if (survivorList.get(i).isAlive()){
                     zombieList.get(i).setCurrentHealth(zombieList.get(i).getCurrentHealth() - survivorList.get(i).getAttackDamage());
-                    System.out.println(survivorList.get(i).getCharType() + " dealt " + String.valueOf(survivorList.get(i).getAttackDamage()) + " to " + zombieList.get(i).getCharType());
+                   // System.out.println(survivorList.get(i).getCharType() + " dealt " + String.valueOf(survivorList.get(i).getAttackDamage()) + " to " + zombieList.get(i).getCharType());
+                }
+                if (zombieList.get(i).getCurrentHealth() <= 0){
+                    System.out.println(survivorList.get(i).getCharType() + " " + survivorList.get(i).getID() + " Killed " + zombieList.get(i).getCharType() + " " + zombieList.get(i).getID());
                 }
             }
         }
@@ -109,7 +120,7 @@ public class Game {
         for (Zombie z: zombieList){
             if (z.getCurrentHealth() < 1){
                 z.setIsAlive(false);
-                System.out.println(z.getCharType() + " died");
+                //System.out.println(z.getCharType() + " died");
                 zombieGraveyard.add(z);
             }
         }
@@ -125,15 +136,22 @@ public class Game {
                 //if zombie is alive, attack survivor at opposing index in zombieList
                 if (zombieList.get(i).isAlive()){
                     survivorList.get(i).setCurrentHealth(survivorList.get(i).getCurrentHealth() - zombieList.get(i).getAttackDamage());
-                    System.out.println(zombieList.get(i).getCharType() + " dealt " + String.valueOf(zombieList.get(i).getAttackDamage()) + " to " + survivorList.get(i).getCharType());
+                    //System.out.println(zombieList.get(i).getCharType() + " dealt " + String.valueOf(zombieList.get(i).getAttackDamage()) + " to " + survivorList.get(i).getCharType());
                 }
+                if (survivorList.get(i).getCurrentHealth() <= 0){
+                    System.out.println(zombieList.get(i).getCharType() + " " + zombieList.get(i).getID() + " Killed " + survivorList.get(i).getCharType() + " " + survivorList.get(i).getID());
+                }
+
             }
         }
         else{
             for (int i = 0; i < survivorList.size(); i++){
                 if (zombieList.get(i).isAlive()){
                     survivorList.get(i).setCurrentHealth(survivorList.get(i).getCurrentHealth() - zombieList.get(i).getAttackDamage());
-                    System.out.println(zombieList.get(i).getCharType() + " dealt " + String.valueOf(zombieList.get(i).getAttackDamage()) + " to " + survivorList.get(i).getCharType());
+                    //System.out.println(zombieList.get(i).getCharType() + " dealt " + String.valueOf(zombieList.get(i).getAttackDamage()) + " to " + survivorList.get(i).getCharType());
+                }
+                if (survivorList.get(i).getCurrentHealth() <= 0){
+                    System.out.println(zombieList.get(i).getCharType() + " " + zombieList.get(i).getID() + " Killed " + survivorList.get(i).getCharType() + " " + survivorList.get(i).getID());
                 }
             }
         }
@@ -142,7 +160,7 @@ public class Game {
         for (Survivor s: survivorList){
             if (s.getCurrentHealth() < 1){
                 s.setIsAlive(false);
-                System.out.println(s.getCharType() + " died");
+                //System.out.println(s.getCharType() + " died");
                 survivorGraveyard.add(s);
             }
         }
