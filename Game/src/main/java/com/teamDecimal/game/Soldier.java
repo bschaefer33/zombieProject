@@ -1,5 +1,5 @@
 
-package zombiewar;
+package com.teamDecimal.game;
 
 /**
  *

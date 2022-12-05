@@ -1,4 +1,4 @@
-package zombiewar;
+package com.teamDecimal.game;
 
 /**
  *
@@ -8,15 +8,15 @@ package zombiewar;
 import java.util.*;
 
 public class Game {
-    private List<Zombie> zombieList = new ArrayList<>();
-    private List<Zombie> zombieGraveyard = new ArrayList();
-    private List<Survivor> survivorList = new ArrayList<>();
-    private List<Survivor> survivorGraveyard = new ArrayList();
+    public static List<Zombie> zombieList = new ArrayList<>();
+    public static List<Zombie> zombieGraveyard = new ArrayList();
+    public static List<Survivor> survivorList = new ArrayList<>();
+    public static List<Survivor> survivorGraveyard = new ArrayList();
     
-    private boolean isRunning = true;
+    public static boolean isRunning = true;
     
     
-    Game(){
+    public static void main(String[] args){
         //game logic
         System.out.println("Game Start!");
         createCharacters();
@@ -27,7 +27,7 @@ public class Game {
         }
     }
     
-    public void createCharacters(){
+    public static void createCharacters(){
         //Zombies created
         Tank zombie1 = new Tank();
         CommonInfect zombie2 = new CommonInfect();
@@ -52,7 +52,7 @@ public class Game {
 
     }
     
-    public void survivorsAttack(){
+    public static void survivorsAttack(){
         //determine which list is shorter to use for attacks, to prevent out of bounds exception
         if (survivorList.size() <= zombieList.size()){
             for (int i = 0; i < survivorList.size(); i++){
@@ -86,7 +86,7 @@ public class Game {
         zombieList.removeAll(zombieGraveyard);
     }
     
-    public void zombiesAttack(){
+    public static void zombiesAttack(){
         //determine which list is shorter to use for attacks, to prevent out of bounds exception
         if (zombieList.size() <= survivorList.size()){
             for (int i = 0; i < zombieList.size(); i++){
@@ -121,7 +121,7 @@ public class Game {
     
     //method determines if all members of a list are no longer alive,
     //then returns end game message and boolean value to end while loop
-    public boolean declareWinner(){
+    public static boolean declareWinner(){
         if (survivorList.isEmpty()){
             System.out.println("Survivors wiped out!");
             return false;
