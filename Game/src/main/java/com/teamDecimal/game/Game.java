@@ -91,7 +91,7 @@ public class Game {
     
     
     }
-    public static void assignWeapon(Character survivor){
+    public static void assignWeapon(Survivor survivor){
         //random number to choose weapon
         int randomSize = (int)(Math.random()*7);
         switch(randomSize){

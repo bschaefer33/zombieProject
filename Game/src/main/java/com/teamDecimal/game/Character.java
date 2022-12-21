@@ -10,7 +10,7 @@ public class Character {
     private int attackDamage;
     private boolean isAlive = true;
     private int ID;
-    private Weapon weaponSelected;
+    
     
     public int getAttackDamage(){
         return attackDamage;
@@ -50,15 +50,7 @@ public class Character {
     public void setID(int ID){
         this.ID = ID;
     }
-    public Weapon getWeapon(){
-        return this.weaponSelected;
-    }
-    public void setWeapon(Weapon weaponSelected){
-        this.weaponSelected = weaponSelected;
-    }
-    public String getWeaponString(){
-        return weaponSelected.getType();
-    }
+    
 
     
 }

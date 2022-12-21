@@ -9,7 +9,11 @@ package com.teamDecimal.game;
  * @author brittanylaptop
  */
 public class FryingPan extends Weapon {
-    int damage = 5;
-    double accuracy = 40.0;
-    String type = "Frying Pan";
+    
+    FryingPan(){
+        super.setDamage(4);
+        super.setAccuracy(30);
+        super.setType("Frying Pan");
+    }
+
 }

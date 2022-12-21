@@ -7,6 +7,7 @@ package com.teamDecimal.game;
  */
 public class Survivor extends Character{
     private String charType;
+    private Weapon weaponSelected;
     
     public String getCharType(){
         return charType;
@@ -14,5 +15,14 @@ public class Survivor extends Character{
     
     public void setCharType(String type){
         this.charType = type;
+    }
+    public Weapon getWeapon(){
+        return this.weaponSelected;
+    }
+    public void setWeapon(Weapon weaponSelected){
+        this.weaponSelected = weaponSelected;
+    }
+    public String getWeaponString(){
+        return weaponSelected.getType();
     }
 }

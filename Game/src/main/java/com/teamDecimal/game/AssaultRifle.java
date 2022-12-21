@@ -9,7 +9,11 @@ package com.teamDecimal.game;
  * @author brittanylaptop
  */
 public class AssaultRifle extends Weapon {
-    int damage = 8;
-    double accuracy = 70.0;
-    String type = "Assualt Rifle";
+    
+    AssaultRifle(){
+        super.setDamage(8);
+        super.setAccuracy(70);
+        super.setType("Assault Rifle");
+    }
+   
 }

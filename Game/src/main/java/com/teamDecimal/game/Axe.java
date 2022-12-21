@@ -9,7 +9,11 @@ package com.teamDecimal.game;
  * @author brittanylaptop
  */
 public class Axe extends Weapon {
-    int damage;
-    int accuracy;
-    String type;
+    
+    Axe(){
+        super.setDamage(6);
+        super.setAccuracy(50);
+        super.setType("Axe");
+    }
+
 }

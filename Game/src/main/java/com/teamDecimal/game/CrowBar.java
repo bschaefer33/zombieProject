@@ -9,7 +9,11 @@ package com.teamDecimal.game;
  * @author brittanylaptop
  */
 public class CrowBar extends Weapon {
-    int damage = 6;
-    double accuracy = 50.0;
-    String type = "Crow Bar";
+    
+    CrowBar(){
+        super.setDamage(5);
+        super.setAccuracy(40);
+        super.setType("Crow Bar");
+    }
+    
 }
