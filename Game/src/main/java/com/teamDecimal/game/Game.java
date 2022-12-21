@@ -55,12 +55,14 @@ public class Game {
                 if (i < childArray.length){
                     Child child = new Child();
                     child.setID(i);
+                    assignWeapon(child);
                     childArray[i] = child; //adds a child into the array
                     survivorList.add(child);
                 }
                 if(i < teacherArray.length){
                     Teacher teacher = new Teacher();
                     teacher.setID(i);
+                    assignWeapon(teacher);
                     teacherArray[i] = teacher;//add in a teacher into array
                     survivorList.add(teacher);
        
@@ -68,6 +70,7 @@ public class Game {
                 if(i < soldierArray.length){
                     Soldier soldier = new Soldier();
                     soldier.setID(i);
+                    assignWeapon(soldier);
                     soldierArray[i] = soldier;//add in a soldier into array 
                     survivorList.add(soldier);
                 }
@@ -88,6 +91,42 @@ public class Game {
     
     
     }
+    public static void assignWeapon(Character survivor){
+        //random number to choose weapon
+        int randomSize = (int)(Math.random()*7);
+        switch(randomSize){
+            case 0: 
+                ShotGun shotGun = new ShotGun();
+                survivor.setWeapon(shotGun);
+                break;
+            case 1: 
+                MachineGun machineGun = new MachineGun();
+                survivor.setWeapon(machineGun);
+                break;
+            case 2: 
+                AssaultRifle assaultRifle = new AssaultRifle();
+                survivor.setWeapon(assaultRifle);
+                break;
+            case 3: 
+                Pistol pistol = new Pistol();
+                survivor.setWeapon(pistol);
+                break;
+            case 4: 
+                Axe axe = new Axe();
+                survivor.setWeapon(axe);
+                break;
+            case 5: 
+                CrowBar crowBar = new CrowBar();
+                survivor.setWeapon(crowBar);
+                break;
+            case 6:
+                FryingPan fryingPan = new FryingPan();
+                survivor.setWeapon(fryingPan);
+            default: 
+                break;
+        }
+        //switch to attach to survivor
+    }
     
     public static void survivorsAttack(){
         //determine which list is shorter to use for attacks, to prevent out of bounds exception
@@ -95,11 +134,11 @@ public class Game {
             for (int i = 0; i < survivorList.size(); i++){
                 //if survivor is alive, attack zombie at opposing index in zombieList
                 if (survivorList.get(i).isAlive()){
-                    zombieList.get(i).setCurrentHealth(zombieList.get(i).getCurrentHealth() - survivorList.get(i).getAttackDamage());
+                    zombieList.get(i).setCurrentHealth(zombieList.get(i).getCurrentHealth() - (survivorList.get(i).getAttackDamage() + survivorList.get( i).getWeapon().getDamageScore()));
                     //System.out.println(survivorList.get(i).getCharType() + " dealt " + String.valueOf(survivorList.get(i).getAttackDamage()) + " to " + zombieList.get(i).getCharType());
                 }
                 if (zombieList.get(i).getCurrentHealth() <= 0){
-                    System.out.println(survivorList.get(i).getCharType() + " " + survivorList.get(i).getID() + " Killed " + zombieList.get(i).getCharType() + " " + zombieList.get(i).getID());
+                    System.out.println(survivorList.get(i).getCharType() + " " + survivorList.get(i).getID() + " Killed " + zombieList.get(i).getCharType() + " " + zombieList.get(i).getID() + " with " + survivorList.get(i).getWeaponString());
                 }
                 
             }
@@ -107,11 +146,11 @@ public class Game {
         else{
             for (int i = 0; i < zombieList.size(); i++){
                 if (survivorList.get(i).isAlive()){
-                    zombieList.get(i).setCurrentHealth(zombieList.get(i).getCurrentHealth() - survivorList.get(i).getAttackDamage());
+                    zombieList.get(i).setCurrentHealth(zombieList.get(i).getCurrentHealth() - (survivorList.get(i).getAttackDamage() + survivorList.get( i).getWeapon().getDamageScore()));
                    // System.out.println(survivorList.get(i).getCharType() + " dealt " + String.valueOf(survivorList.get(i).getAttackDamage()) + " to " + zombieList.get(i).getCharType());
                 }
                 if (zombieList.get(i).getCurrentHealth() <= 0){
-                    System.out.println(survivorList.get(i).getCharType() + " " + survivorList.get(i).getID() + " Killed " + zombieList.get(i).getCharType() + " " + zombieList.get(i).getID());
+                    System.out.println(survivorList.get(i).getCharType() + " " + survivorList.get(i).getID() + " Killed " + zombieList.get(i).getCharType() + " " + zombieList.get(i).getID()+ " with " + survivorList.get(i).getWeaponString());
                 }
             }
         }
