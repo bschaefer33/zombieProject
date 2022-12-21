@@ -9,7 +9,10 @@ package com.teamDecimal.game;
  * @author brittanylaptop
  */
 public class MachineGun extends Weapon {
-    int damage = 9;
-    double accuracy = 80.0 ;
-    String type = "Machine Gun";
+    MachineGun(){
+        super.setDamage(9);
+        super.setAccuracy(80);
+        super.setType("Machine Gun");
+    }
+    
 }
