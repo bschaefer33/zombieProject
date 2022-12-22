@@ -39,10 +39,11 @@ public class Game {
             removeTheDeadZombies();
             zombiesAttack();
             removeTheDeadSurvivors();
-        }while(survivorList.size() > 0 && zombieList.size()>0);
-        declareWinner();
+            isRunning = declareWinner();
+        }while(isRunning);
         
-       // System.out.println("It seems " + survivorList.size() + " have made it to safety.");
+        
+        //System.out.println("It seems " + survivorList.size() + " have made it to safety.");
     }
     
     public static void assignWeapon(Survivor survivor){
@@ -228,10 +229,10 @@ public class Game {
             System.out.println("Survivors wiped out!");
             return true;
         }
-        else{
+        else 
             System.out.println("Zombies defeated!");
             return false;
         }
         
-    }
+    
 }
