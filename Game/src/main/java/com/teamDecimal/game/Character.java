@@ -11,6 +11,7 @@ public class Character {
     private boolean isAlive = true;
     private int ID;
     
+    
     public int getAttackDamage(){
         return attackDamage;
     }
@@ -49,6 +50,7 @@ public class Character {
     public void setID(int ID){
         this.ID = ID;
     }
+    
 
     
 }
